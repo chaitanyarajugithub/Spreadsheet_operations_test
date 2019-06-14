@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+    <line>
+      <![CDATA[user creation unsuccess]]>
+    </line>
+    <line>
+      <![CDATA[Emp unsuccess]]>
+    </line>
+  </reporter-output>
+  <suite name="MainTestcase.AppTest" duration-ms="160068" started-at="2018-08-26T17:00:00Z" finished-at="2018-08-26T17:02:40Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="160068" started-at="2018-08-26T17:00:00Z" finished-at="2018-08-26T17:02:40Z">
+      <class name="MainTestcase.AppTest">
+        <test-method status="PASS" signature="Generate()[pri:0, instance:MainTestcase.AppTest@32e6e9c3]" name="Generate" is-config="true" duration-ms="1160" started-at="2018-08-26T17:00:00Z" finished-at="2018-08-26T17:00:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Generate -->
+        <test-method status="PASS" signature="adminlogin()[pri:0, instance:MainTestcase.AppTest@32e6e9c3]" name="adminlogin" is-config="true" duration-ms="40925" started-at="2018-08-26T17:00:02Z" finished-at="2018-08-26T17:00:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- adminlogin -->
+        <test-method status="PASS" signature="Usercreation()[pri:0, instance:MainTestcase.AppTest@32e6e9c3]" name="Usercreation" duration-ms="28273" started-at="2018-08-26T17:00:42Z" description="Verify usercreation" finished-at="2018-08-26T17:01:11Z">
+          <reporter-output>
+            <line>
+              <![CDATA[user creation unsuccess]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- Usercreation -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:MainTestcase.AppTest@32e6e9c3]" name="afterMethod" is-config="true" duration-ms="14219" started-at="2018-08-26T17:01:11Z" finished-at="2018-08-26T17:01:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="adminlogin()[pri:0, instance:MainTestcase.AppTest@32e6e9c3]" name="adminlogin" is-config="true" duration-ms="36258" started-at="2018-08-26T17:01:25Z" finished-at="2018-08-26T17:02:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- adminlogin -->
+        <test-method status="PASS" signature="Empcreation()[pri:1, instance:MainTestcase.AppTest@32e6e9c3]" name="Empcreation" duration-ms="27456" started-at="2018-08-26T17:02:01Z" description="Verify Empcreation" finished-at="2018-08-26T17:02:29Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Emp unsuccess]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- Empcreation -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:MainTestcase.AppTest@32e6e9c3]" name="afterMethod" is-config="true" duration-ms="11720" started-at="2018-08-26T17:02:29Z" finished-at="2018-08-26T17:02:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- MainTestcase.AppTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- MainTestcase.AppTest -->
+</testng-results>
