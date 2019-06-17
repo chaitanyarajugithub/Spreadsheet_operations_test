@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="MainTestcase.Saplingtest">
+      <class name="MainTestcase.Saplingtest_spreadsheet">
         <methods>
-          <include name="Test"/>
           <include name="beforeTest"/>
           <include name="setUp"/>
+          <include name="Test"/>
         </methods>
-      </class> <!-- MainTestcase.Saplingtest -->
+      </class> <!-- MainTestcase.Saplingtest_spreadsheet -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
