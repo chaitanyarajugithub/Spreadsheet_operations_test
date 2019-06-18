@@ -5,7 +5,6 @@
     <classes>
       <class name="MainTestcase.Saplingtest_spreadsheet">
         <methods>
-          <include name="beforeTest"/>
           <include name="setUp"/>
           <include name="Test"/>
         </methods>

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -87,6 +88,7 @@ public class Saplingtest_spreadsheet {
 			  User_Login userlogin=PageFactory.initElements(driver, User_Login.class);
 			  Usefulmethods Methods = new Usefulmethods();
 			  String companyname = Methods.Company(UrlAdmin);
+			  try {
 			  userlogin.Loginuser(Email, Password);
 			  Thread.sleep(15000);
 			  if(driver.getCurrentUrl().contains("updates")) {
@@ -152,6 +154,10 @@ public class Saplingtest_spreadsheet {
 					  
 				  }
 			  }
+			  } catch (org.openqa.selenium.NoSuchElementException e)  {
+		            System.out.println("NoSuchElementException!!");
+		           
+		        }
 			  Thread.sleep(2000);
 			  driver.close();
 			  }
