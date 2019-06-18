@@ -12,6 +12,9 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.*;
+
+import jdk.nashorn.internal.parser.JSONParser;
+
 import com.google.api.services.sheets.v4.Sheets;
 
 import static org.testng.Assert.assertEquals;
@@ -21,7 +24,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
  
 public class Quickstart {
 /** Application name. */
@@ -95,7 +103,7 @@ return new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
 .build();
 }
  
-public static void main(String[] args) throws IOException {
+public static void main(String[] args) throws IOException, ParseException {
 // Build a new authorized API client service.
 Sheets service = getSheetsService();
  
@@ -125,6 +133,7 @@ System.out.printf("%s,%s,%s\n", row.get(0),row.get(1), row.get(2));
 Quickstart a = new Quickstart();
 String Print = a.Getcelldata("Chaitanya!E4", "13lWxNZlwlAY498DMX4r5KLTpmCYAGRiicVmloLR5YpY");
 System.out.println(Print);
+a.getsheet();
 
 List<String> ranges = Arrays.asList("C9","C10");
 BatchGetValuesResponse readResult = getSheetsService().spreadsheets().values()
@@ -140,6 +149,7 @@ ValueRange febTotal = readResult.getValueRanges().get(1);
 System.out.println((febTotal.getValues().get(0).get(0)));
 }
 }
+
 public String Getcelldata(String Cellnumber,String Sheetid) throws IOException {
 	try {
 	List<String> ranges = Arrays.asList(Cellnumber);
@@ -156,4 +166,42 @@ public String Getcelldata(String Cellnumber,String Sheetid) throws IOException {
      }
 	return "Null"; 
   }
+public void getsheet() throws IOException, ParseException {
+	String spreadsheetId = "1C8B0AISY2VzKGawhXwX95bUNCROsEaysl_2e6ZmGTlk";
+	Sheets service = getSheetsService();
+	Spreadsheet sp = service.spreadsheets().get(spreadsheetId).execute();
+	String sheets = sp.getProperties().getTitle();
+	System.out.println(sheets);	
+	
+	List<Sheet> sheets1 = sp.getSheets();
+	System.out.println(sheets1.size());
+	for (int i = 0; i < sheets1.size(); i++) {
+		Sheet responseString = sheets1.get(i);
+		//System.out.println(responseString);
+		String data=responseString.toString();
+		org.json.simple.parser.JSONParser parse = new org.json.simple.parser.JSONParser();
+		JSONObject jobj = (JSONObject) parse.parse(data);
+		jobj = (JSONObject) parse.parse(jobj.get("properties")+"");
+		System.out.println(jobj.get("title"));
+	    System.out.println(sheets1.get(i));
+	    }
+/*	Iterator<Sheet> iterator = sheets1.iterator();
+	System.out.println(iterator.next());*/
+	
+}
+public String getsheetname(String SpreadsheetId,int sheetid) throws IOException, ParseException {
+	String spreadsheetId = SpreadsheetId;
+	Sheets service = getSheetsService();
+	Spreadsheet sp = service.spreadsheets().get(spreadsheetId).execute();
+	List<Sheet> sheets1 = sp.getSheets();
+	Sheet responseString = sheets1.get(sheetid);
+		String data=responseString.toString();
+		org.json.simple.parser.JSONParser parse = new org.json.simple.parser.JSONParser();
+		JSONObject jobj = (JSONObject) parse.parse(data);
+		jobj = (JSONObject) parse.parse(jobj.get("properties")+"");
+		String Sheetname = (String) jobj.get("title");
+		//System.out.println(jobj.get("title"));
+		return Sheetname;
+	   }
+	
 }

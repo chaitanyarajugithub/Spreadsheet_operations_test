@@ -8,6 +8,8 @@ package MainTestcase;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -51,7 +53,7 @@ public class Saplingtest_spreadsheet {
   }
  
   @Test(description="ExcelRead",enabled = true)
-  public void Test() throws InterruptedException, IOException {
+  public void Test() throws InterruptedException, IOException, ParseException {
 	  try {
 	  Quickstart Gc = new Quickstart();
 	  p = new Properties();
@@ -59,8 +61,9 @@ public class Saplingtest_spreadsheet {
 	  p.load(fi);
 	  ExcelUtilMethods excel= new ExcelUtilMethods(inputpath);
 	  String spreadsheetid = p.getProperty("spreadsheetid");
-	  String sheetname = p.getProperty("Sheetname");
-	 
+	  //String sheetname = p.getProperty("Sheetname");
+	  for (int i=1; i<5; i++) {
+		  String sheetname = Gc.getsheetname(spreadsheetid, i);
 		  String Url=Gc.Getcelldata(sheetname+"!C9", spreadsheetid);
 		  String UrlAdmin=Gc.Getcelldata(sheetname+"!C10", spreadsheetid);
 		  String adminemail1=Gc.Getcelldata(sheetname+"!C13", spreadsheetid);
@@ -155,12 +158,13 @@ public class Saplingtest_spreadsheet {
 			  else {
 				  System.out.println("Not correct Formats");
 			  }
-		  }			  
+		  }	}		  
 	  
 	  } catch (NullPointerException | IndexOutOfBoundsException e) {
 		    e.printStackTrace();
 		}
   }
+	  
  /* @AfterTest
   public void tearDown() throws Exception {
 	report.flush();
