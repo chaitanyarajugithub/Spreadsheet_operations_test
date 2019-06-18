@@ -63,7 +63,7 @@ public class Saplingtest_spreadsheet {
 	  ExcelUtilMethods excel= new ExcelUtilMethods(inputpath);
 	  String spreadsheetid = p.getProperty("spreadsheetid");
 	  //String sheetname = p.getProperty("Sheetname");
-	  for (int i=1; i<5; i++) {
+	  for (int i=0; i<5; i++) {
 		  String sheetname = Gc.getsheetname(spreadsheetid, i);
 		  String Url=Gc.Getcelldata(sheetname+"!C9", spreadsheetid);
 		  String UrlAdmin=Gc.Getcelldata(sheetname+"!C10", spreadsheetid);
